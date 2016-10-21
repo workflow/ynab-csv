@@ -10,12 +10,11 @@ numberfy = (val) ->
   if isNaN(val)
     # check for negative signs or parenthases.
     is_negative = if (val.match("-") || val.match(/\(.*\)/)) then -1 else 1
-    # Attempting to convert into standard en-US currency format
-    val = val.toLocaleString('en-US');
-    # remove any commas
-    val = val.replace(/,/g, "")
+    # manually converting from de-DE into a standard en-US currency format
+    # first, remove any dots
+    val = val.replace(/./g, "")
     # return just the number and make it negative if needed.
-    +(val.match(/\d+.?\d*/)[0]) * is_negative
+    +(val.match(/\d+,?\d*/)[0]) * is_negative
   else
     val
 
