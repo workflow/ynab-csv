@@ -12,7 +12,7 @@ numberfy = (val) ->
     is_negative = if (val.match("-") || val.match(/\(.*\)/)) then -1 else 1
     # manually converting from de-DE into a standard en-US currency format
     # first, remove any dots
-    val = val.replace(/./g, "")
+    val = val.replace(/\./g, "")
     # return just the number and make it negative if needed.
     +(val.match(/\d+,?\d*/)[0]) * is_negative
   else
